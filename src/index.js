@@ -1,9 +1,13 @@
-module.exports = function reverse (num) {
-    let result = 0;
-    while (num) {
-      result = result * 10 + num % 10;
-      num = Math.floor(num / 10);
+module.exports = reverseNumber = num => {
+    const str = (Math.abs(num)).toString()
+    let res = ''
+    const isNegative = num < 0
+    
+    for (let i = 0; i < str.length; i++){
+      const char = str[i]
+      if (char !== '0') res = char + res
+      else if (char === '0' && str[i + 1] && str[i + 1] !== '0') res = char + res
     }
   
-    return result;
-}
+    return Number(isNegative ? res * 1 : res)
+  }
